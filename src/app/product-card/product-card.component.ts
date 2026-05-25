@@ -25,10 +25,13 @@ export class ProductCardComponent {
   @Input()
   photoUrl!: string;
 
+  @Input({ transform: booleanAttribute })
+  isShow!: boolean;
+
+  @Input({ transform: numberAttribute })
+  price!: number;
+
   onSetDisplay(isShow: boolean): void {
     this.isShowChange.emit(isShow);
   }
-
-  @Input({ transform: booleanAttribute })
-  isShow!: boolean;
 }

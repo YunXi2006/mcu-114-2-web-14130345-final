@@ -13,6 +13,8 @@ export class App {
   company = '博碩文化';
   isShow = true;
   photoUrl = 'https://api.fnkr.net/testimg/200x200/DDDDDD/999999/?text=img';
+  price = 10000;
+
   onSetDisplay(isShow: boolean): void {
     this.isShow = isShow;
   }
