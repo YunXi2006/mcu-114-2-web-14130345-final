@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { booleanAttribute, Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-product-card',
@@ -7,6 +7,9 @@ import { Component, Input } from '@angular/core';
   styleUrl: './product-card.component.scss',
 })
 export class ProductCardComponent {
+  @Input({ required: true, transform: numberAttribute })
+  id!: number;
+
   @Input()
   productName!: string;
 
@@ -18,4 +21,11 @@ export class ProductCardComponent {
 
   @Input()
   photoUrl!: string;
+
+  onSetDisplay(isShow: boolean): void {
+    this.isShow = isShow;
+  }
+
+  @Input({ transform: booleanAttribute })
+  isShow!: boolean;
 }
