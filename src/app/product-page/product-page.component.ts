@@ -1,6 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { ProductCardListComponent } from '../product-card-list/product-card-list.component';
 import { Product } from '../model/product';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-page',
@@ -9,7 +10,8 @@ import { Product } from '../model/product';
   styleUrl: './product-page.component.scss',
 })
 export class ProductPageComponent {
-  products = signal<Product[]>([
+  private router = inject(Router);
+  protected products = signal<Product[]>([
     new Product({
       id: 1,
       name: '書籍 A',
@@ -61,4 +63,7 @@ export class ProductPageComponent {
       price: 10000,
     }),
   ]);
+  protected onView(product: Product): void {
+    this.router.navigate(['product', product.id]);
+  }
 }
