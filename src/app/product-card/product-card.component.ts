@@ -29,5 +29,9 @@ export class ProductCardComponent {
     this.isShow.set(isShow);
   }
 
+  readonly edit = output<void>();
+
+  readonly remove = output<void>();
+
   readonly view = output<void>();
 }

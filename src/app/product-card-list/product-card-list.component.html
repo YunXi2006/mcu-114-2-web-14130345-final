@@ -7,6 +7,8 @@
   [(isShow)]="product.isShow"
   [photoUrl]="product.photoUrl"
   [price]="product.price"
+  (edit)="edit.emit(product)"
+  (remove)="remove.emit(product)"
   (view)="view.emit(product)"
 ></app-product-card>
 } @empty {
