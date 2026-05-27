@@ -1,11 +1,13 @@
 :host {
   display: flex;
-  flex-direction: row;
+  flex-direction: row; // 維持原本
   flex-wrap: wrap;
   gap: 20px;
 
-  .app-product-card {
-    flex-basis: calc(20% - 40px);
+  .search-bar {
+    width: 100%; // 獨佔一行，把卡片擠到下面
+    display: flex;
+    gap: 0.5rem;
   }
 
   div.data-empty {
@@ -15,5 +17,9 @@
     font-size: 20px;
     font-weight: 200;
     text-align: center;
+  }
+
+  .app-product-card {
+    flex-basis: calc(20% - 40px);
   }
 }
