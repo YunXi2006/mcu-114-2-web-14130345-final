@@ -13,20 +13,11 @@ import { ProductService } from '../services/product.service';
 export class ProductPageComponent implements OnInit {
   private readonly router = inject(Router);
 
-  private productService!: ProductService;
+  private readonly productService = inject(ProductService);
 
   protected readonly products = signal<Product[]>([]);
 
   ngOnInit(): void {
-    this.productService = new ProductService();
     this.products.set(this.productService.getList());
-  }
-
-  protected onEdit(product: Product): void {
-    this.router.navigate(['product', 'form', product.id]);
-  }
-
-  protected onView(product: Product): void {
-    this.router.navigate(['product', 'view', product.id]);
   }
 }
