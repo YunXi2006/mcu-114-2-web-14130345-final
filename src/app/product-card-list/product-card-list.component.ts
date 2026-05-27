@@ -18,6 +18,4 @@ export class ProductCardListComponent {
   readonly remove = output<Product>();
 
   readonly view = output<Product>();
-
-  readonly pageIndex = signal(1);
 }
