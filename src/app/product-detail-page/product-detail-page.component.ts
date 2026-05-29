@@ -10,18 +10,12 @@ import { ProductService } from '../services/product.service';
   templateUrl: './product-detail-page.component.html',
   styleUrl: './product-detail-page.component.scss',
 })
-export class ProductDetailPageComponent implements OnInit {
-  id = input.required<number, string | number>({ transform: numberAttribute });
-
-  protected readonly product = signal<Product>(new Product());
+export class ProductDetailPageComponent {
+  readonly product = input.required<Product>();
 
   private readonly router = inject(Router);
 
   private readonly productService = inject(ProductService);
-
-  ngOnInit(): void {
-    this.productService.getById(this.id()).subscribe((product) => this.product.set(product));
-  }
 
   onEdit(): void {
     this.router.navigate(['product', 'form', this.product().id]);
