@@ -64,4 +64,7 @@ export class ProductService {
     const data = name ? this._data.filter((item) => item.name === name) : [...this._data];
     return { data: data.slice(startIndex, endIndex), count: this._data.length };
   }
+  getById(productId: number): Product {
+    return this._data.find(({ id }) => id === productId)!;
+  }
 }
