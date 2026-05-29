@@ -1,4 +1,4 @@
-import { Component, input, output, signal, computed, OnInit } from '@angular/core';
+import { Component, input, output, signal, computed, OnInit, effect } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ProductCardComponent } from '../product-card/product-card.component';
 import { Product } from '../model/product';
@@ -22,6 +22,13 @@ export class ProductCardListComponent implements OnInit {
 
   ngOnInit() {
     this.filteredProducts.set(this.products());
+  }
+
+  constructor() {
+    effect(() => {
+      // products() 每次更新都會自動執行
+      this.filteredProducts.set(this.products());
+    });
   }
 
   onSearch() {
