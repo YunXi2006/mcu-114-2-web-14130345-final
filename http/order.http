@@ -1,0 +1,52 @@
+@webApiUrl = https://mcu-shopping-api.azurewebsites.net/api/order
+@studentId = 14130345
+
+### 取得所有訂單 (需提供 studentId)
+GET {{webApiUrl}}?studentId={{studentId}}
+Accept: application/json
+
+### 建立新訂單
+POST {{webApiUrl}}
+Content-Type: application/json
+
+{
+  "studentId": "{{studentId}}",
+  "customerName": "張小明",
+  "phone": "0912345678",
+  "address": "台北市大安區羅斯福路四段1號",
+  "orderDetails": [
+    {
+      "productId": "50d2cdb7-b207-417b-ac6c-f08007d91a05",
+      "quantity": 2
+    },
+    {
+      "productId": "ec61293b-a07b-4bf2-80e3-6ae5c4bad2e7",
+      "quantity": 1
+    }
+  ]
+}
+
+### 取得特定訂單 (請更換為實際產生的 ID)
+@orderId = 88f7363c-b27f-48ee-9b03-cadd8dfe4c07
+GET {{webApiUrl}}/{{orderId}}
+
+### 更新訂單
+PUT {{webApiUrl}}/{{orderId}}
+Content-Type: application/json
+
+{
+  "id": "{{orderId}}",
+  "studentId": "{{studentId}}",
+  "customerName": "張小明 (已更新)",
+  "phone": "0912345678",
+  "address": "台北市大安區羅斯福路四段1號 (更新地址)",
+  "orderDetails": [
+    {
+      "productId": "50d2cdb7-b207-417b-ac6c-f08007d91a05",
+      "quantity": 3
+    }
+  ]
+}
+
+### 刪除訂單
+DELETE {{webApiUrl}}/{{orderId}}
