@@ -23,13 +23,19 @@ export class ProductPageComponent {
   protected readonly totalCount = signal(0);
 
   protected readonly products = signal<Product[]>([]);
-
+  protected readonly searchName = signal<string | undefined>(undefined);
   constructor() {
     effect(() => {
       const pageIndex = this.pageIndex();
       const pageSize = this.pageSize();
-      this.getProducts(pageIndex, pageSize);
+      const name = this.searchName();
+      this.getProducts(name, pageIndex, pageSize);
     });
+  }
+
+  onSearch(name: string): void {
+    this.searchName.set(name || undefined);
+    this.pageIndex.set(1); // 搜尋後回第一頁
   }
 
   onEdit(product: Product): void {
@@ -40,8 +46,8 @@ export class ProductPageComponent {
     this.router.navigate(['product', 'view', product.id]);
   }
 
-  private getProducts(pageIndex: number, pageSize: number): void {
-    this.productService.getList(undefined, pageIndex, pageSize).subscribe(({ data, count }) => {
+  private getProducts(name: string | undefined, pageIndex: number, pageSize: number): void {
+    this.productService.getList(name, pageIndex, pageSize).subscribe(({ data, count }) => {
       this.products.set(data);
       this.totalCount.set(count);
     });

@@ -12,7 +12,7 @@ import { PaginationComponent } from '../pagination/pagination.component';
 })
 export class ProductCardListComponent implements OnInit {
   readonly products = input<Product[]>([]);
-
+  readonly search = output<string>();
   readonly edit = output<Product>();
   readonly remove = output<Product>();
   readonly view = output<Product>();
@@ -32,6 +32,7 @@ export class ProductCardListComponent implements OnInit {
   }
 
   onSearch() {
+    this.search.emit(this.searchKeyword);
     const keyword = this.searchKeyword.trim();
     this.filteredProducts.set(this.products().filter((p) => p.name.includes(keyword)));
   }
