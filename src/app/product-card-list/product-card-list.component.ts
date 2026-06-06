@@ -26,7 +26,6 @@ export class ProductCardListComponent implements OnInit {
 
   constructor() {
     effect(() => {
-      // products() 每次更新都會自動執行
       this.filteredProducts.set(this.products());
     });
   }
