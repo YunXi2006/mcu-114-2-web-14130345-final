@@ -17,8 +17,8 @@ export class ProductDetailPageComponent {
 
   private readonly productService = inject(ProductService);
 
-  onEdit(): void {
-    this.router.navigate(['product', 'form', this.product().id]);
+  onAddToCart(): void {
+    this.router.navigate(['shoppingcar-page']);
   }
 
   onBack(): void {

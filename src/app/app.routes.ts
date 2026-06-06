@@ -11,5 +11,5 @@ export const routes: Routes = [
   { path: 'products', component: ProductPageComponent },
   { path: 'product/view/:id', component: ProductDetailPageComponent, resolve: { product: productResolver } },
   { path: 'product/form/:id', component: ProductFormPageComponent },
-  { path: 'Shopping-car', component: ShoppingCarPageComponent },
+  { path: 'shoppingcar-page', component: ShoppingCarPageComponent },
 ];
