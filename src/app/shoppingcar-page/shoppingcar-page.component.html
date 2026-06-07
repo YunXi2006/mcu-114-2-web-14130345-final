@@ -1,15 +1,23 @@
-<div class="container">
-  <div class="section-title">基本資料</div>
-  <div class="form-item">
-    <label>姓名</label>
-    <input type="text" />
+<div class="page">
+  <div class="container" [formGroup]="form">
+    <div class="section-title">基本資料</div>
+    <div class="form-item">
+      <label>姓名</label>
+      <input type="text" formControlName="name" />
+      <span class="error-message">請輸入姓名</span>
+    </div>
+    <div class="form-item">
+      <label>地址</label>
+      <input type="text" formControlName="address" />
+      <span class="error-message">請輸入地址</span>
+    </div>
+    <div class="form-item">
+      <label>電話</label>
+      <input type="text" formControlName="phone" />
+      <span class="error-message">請輸入電話</span>
+    </div>
   </div>
-  <div class="form-item">
-    <label>地址</label>
-    <input type="text" />
-  </div>
-  <div class="form-item">
-    <label>電話</label>
-    <input type="text" />
-  </div>
+
+  <!-- 之後放購買項目 -->
+  <div class="cart-section">購買項目</div>
 </div>
