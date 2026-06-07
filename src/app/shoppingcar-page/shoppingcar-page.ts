@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-shoppingcar-page',
@@ -9,8 +9,17 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 })
 export class ShoppingCarPageComponent {
   protected readonly form = new FormGroup({
-    name: new FormControl<string | null>(null),
-    address: new FormControl<string | null>(null),
-    phone: new FormControl<string | null>(null),
+    name: new FormControl<string | null>(null, { validators: [Validators.required] }),
+    address: new FormControl<string | null>(null, { validators: [Validators.required] }),
+    phone: new FormControl<string | null>(null, { validators: [Validators.required] }),
   });
+  get name(): FormControl<string | null> {
+    return this.form.get('name') as FormControl<string | null>;
+  }
+  get address(): FormControl<string | null> {
+    return this.form.get('address') as FormControl<string | null>;
+  }
+  get phone(): FormControl<string | null> {
+    return this.form.get('phone') as FormControl<string | null>;
+  }
 }
