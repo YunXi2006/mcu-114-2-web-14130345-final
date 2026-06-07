@@ -22,5 +22,17 @@
     &.active {
       background-color: #005ccb1a;
     }
+    .cart-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #005ccb;
+      color: white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      font-size: 12px;
+      margin-left: 4px;
+    }
   }
 }

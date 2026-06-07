@@ -26,4 +26,8 @@ export class ProductRemoteService extends ProductService {
       .get<{ data: Product[]; items: number }>(this.url, { params })
       .pipe(map(({ data, items: count }) => ({ data, count })));
   }
+
+  addToCart(product: Readonly<Product>): Observable<Product> {
+    return this.httpClient.post<Product>('http://localhost:3000/cart', { ...product });
+  }
 }

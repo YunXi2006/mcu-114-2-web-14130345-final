@@ -3,6 +3,7 @@ import { Component, OnInit, inject, input, numberAttribute, signal } from '@angu
 import { Router } from '@angular/router';
 import { Product } from '../model/product';
 import { ProductService } from '../services/product.service';
+import { ProductRemoteService } from '../services/product-remote.service';
 
 @Component({
   selector: 'app-product-detail-page',
@@ -15,10 +16,15 @@ export class ProductDetailPageComponent {
 
   private readonly router = inject(Router);
 
-  private readonly productService = inject(ProductService);
+  private productService = inject(ProductRemoteService);
 
-  onAddToCart(): void {
+  onAddToCart(product: Product) {
+    console.log('onAddToCart 被呼叫', product);
     this.router.navigate(['shoppingcar-page']);
+    this.productService.addToCart(product).subscribe({
+      next: (res) => console.log('已加入購物車', res),
+      error: (err: unknown) => console.error('加入失敗', err),
+    });
   }
 
   onBack(): void {

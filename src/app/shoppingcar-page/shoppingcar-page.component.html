@@ -24,6 +24,22 @@
     </div>
   </div>
 
-  <!-- 之後放購買項目 -->
-  <div class="cart-section">購買項目</div>
+  <div class="cart-section">
+    <div class="section-title">購買項目</div>
+    @for (item of cartItems(); track item.product.id) {
+    <div class="cart-item">
+      <span class="item-index">{{ $index + 1 }}</span>
+      <span class="item-name">{{ item.product.name }}</span>
+      <input type="number" class="item-quantity" [value]="item.quantity" min="1" readonly />
+      <span class="item-price">{{ item.product.price * item.quantity | currency }}</span>
+      <button class="btn-remove" (click)="onRemove(item)">刪除</button>
+    </div>
+    } @empty {
+    <div>購物車是空的</div>
+    }
+
+    <div class="cart-total">
+      <button [disabled]="form.invalid">送出訂單 ({{ total() | currency }})</button>
+    </div>
+  </div>
 </div>
