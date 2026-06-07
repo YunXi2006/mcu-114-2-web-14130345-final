@@ -1,53 +1,115 @@
 .page {
   display: flex;
-  gap: 20px;
-  padding: 20px;
+  gap: 24px;
+  padding: 24px;
   align-items: flex-start;
 }
 
+// 基本資料區塊
 .container {
-  width: 320px;
-  flex-shrink: 0;
   border: 1px solid #ccc;
-  margin: 10px;
+  padding: 16px;
+  min-width: 300px;
 
   .section-title {
     text-align: center;
-    padding: 8px 0;
-    font-size: 16px;
-    font-weight: 500;
-    border-bottom: 1px solid #ccc;
-    background-color: #f5f5f5;
+    font-weight: bold;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #ccc; // 加這行
+    padding-bottom: 8px;
   }
 
   .form-item {
     display: flex;
     align-items: center;
-    padding: 6px 12px;
     gap: 8px;
+    margin-bottom: 12px;
+
+    label {
+      width: 40px;
+    }
+
+    input {
+      flex: 1;
+      padding: 4px;
+      border: 1px solid #ccc;
+    }
 
     .error-message {
       color: red;
-      font-size: 12px;
+      font-size: 13px;
       white-space: nowrap;
-    }
-
-    > label {
-      width: 40px;
-      font-size: 15px;
-      flex-shrink: 0;
-    }
-
-    > input {
-      flex: 1;
-      padding: 3px 6px;
-      border: 1px solid #999;
-      font-size: 14px;
     }
   }
 }
 
+// 購買項目區塊
 .cart-section {
   flex: 1;
   border: 1px solid #ccc;
+  padding: 16px;
+
+  .section-title {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #ccc; // 加這行
+    padding-bottom: 8px;
+  }
+
+  .cart-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+
+    .item-index {
+      width: 24px;
+      text-align: center;
+    }
+
+    .item-name {
+      flex: 1;
+    }
+
+    .item-quantity {
+      width: 60px;
+      text-align: center;
+      padding: 4px;
+      border: 1px solid #ccc;
+    }
+
+    .item-price {
+      width: 100px;
+      text-align: right;
+    }
+
+    .btn-remove {
+      border: 1px solid red;
+      color: red;
+      background: white;
+      padding: 2px 8px;
+      cursor: pointer;
+    }
+  }
+}
+
+// 送出訂單按鈕
+.cart-total {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+
+  button {
+    padding: 6px 16px;
+    border: 1px solid #ccc;
+    background: white;
+    cursor: pointer;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
 }

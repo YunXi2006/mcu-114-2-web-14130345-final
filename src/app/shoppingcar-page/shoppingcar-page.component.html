@@ -37,9 +37,8 @@
     } @empty {
     <div>購物車是空的</div>
     }
-
-    <div class="cart-total">
-      <button [disabled]="form.invalid">送出訂單 ({{ total() | currency }})</button>
-    </div>
   </div>
+</div>
+<div class="cart-total">
+  <button [disabled]="form.invalid">送出訂單 ({{ total() | currency }})</button>
 </div>

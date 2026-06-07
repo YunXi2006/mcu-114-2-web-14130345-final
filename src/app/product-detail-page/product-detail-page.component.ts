@@ -20,7 +20,6 @@ export class ProductDetailPageComponent {
 
   onAddToCart(product: Product) {
     console.log('onAddToCart 被呼叫', product);
-    this.router.navigate(['shoppingcar-page']);
     this.productService.addToCart(product).subscribe({
       next: (res) => console.log('已加入購物車', res),
       error: (err: unknown) => console.error('加入失敗', err),
