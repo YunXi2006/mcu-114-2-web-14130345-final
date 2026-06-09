@@ -1,0 +1,66 @@
+@webApiUrl = https://mcu-shopping-api.azurewebsites.net/api/product
+@studentId = 14130345
+
+# Get List - 所有產品
+GET {{webApiUrl}}?studentId={{studentId}}
+
+###
+
+# GetList - 搜尋產品名稱
+GET {{webApiUrl}}?studentId={{studentId}}&name=書籍 A
+Accept: application/json
+
+###
+
+# 分頁取得產品 (第 1 頁，每頁 5 筆)
+GET {{webApiUrl}}?studentId={{studentId}}&pageIndex=1&pageSize=5
+Accept: application/json
+
+###
+# Get By Id
+@productId = dd11df26-b20a-4aa7-9e84-fc055064aa84
+GET {{webApiUrl}}/{{productId}}
+Accept: application/json
+###
+# Create
+POST {{webApiUrl}}
+Content-Type: application/json
+
+{
+  "studentId": "{{studentId}}",
+  "name": "書籍 Z",
+  "authors": [
+    "作者甲",
+    "作者乙",
+    "作者丙"
+  ],
+  "company": "博碩文化",
+  "isShow": true,
+  "photoUrl": "https://api.fnkr.net/testimg/200x200/DDDDDD/999999/?text=img",
+  "price": 10000
+}
+
+###
+# Update
+@updateProductId = xxxx
+PUT {{webApiUrl}}/{{updateProductId}}
+Content-Type: application/json
+
+{
+  "id": "{{updateProductId}}",
+  "studentId": "{{studentId}}",
+  "name": "書籍 Z2",
+  "authors": [
+    "作者甲",
+    "作者乙",
+    "作者丙"
+  ],
+  "company": "博碩文化",
+  "isShow": false,
+  "photoUrl": "https://api.fnkr.net/testimg/200x200/DDDDDD/999999/?text=img",
+  "price": 10000
+}
+###
+# Delete
+@removeProductId = xxx
+DELETE {{webApiUrl}}/{{removeProductId}}
