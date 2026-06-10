@@ -40,5 +40,5 @@
   </div>
 </div>
 <div class="cart-total">
-  <button [disabled]="form.invalid">送出訂單 ({{ total() | currency }})</button>
+  <button [disabled]="form.invalid" (click)="onSubmit()">送出訂單 ({{ total() | currency }})</button>
 </div>
