@@ -50,7 +50,7 @@ export class OrderService {
   getById(orderId: string): Observable<Order> {
     return of(this._orders).pipe(
       mergeMap((data) => data),
-      filter(({ id }) => id === orderId),
+      filter(({ id }) => id === orderId)
     );
   }
 

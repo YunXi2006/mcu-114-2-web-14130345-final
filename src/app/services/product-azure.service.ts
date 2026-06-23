@@ -11,7 +11,7 @@ import { ProductService } from './product.service';
 export class ProductAzureService extends ProductService {
   private readonly url = 'https://mcu-shopping-api.azurewebsites.net/api/product';
 
-  private readonly studentId = '00000000';
+  private readonly studentId = '14130345';
 
   private readonly httpClient = inject(HttpClient);
 
